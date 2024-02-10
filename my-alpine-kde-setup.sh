@@ -21,6 +21,7 @@ EOF
 
 function setup_french()
 {
+  apk add musl-locales
 cat << EOF > /etc/profile.d/99-fr.sh
 LANG=fr_FR.UTF-8
 LC_CTYPE=fr_FR.UTF-8
@@ -64,7 +65,6 @@ function install_kde()
     kde-applications-admin \
     kde-applications-base \
     kde-applications-network \
-    kdeconnect \
     iwd \
     font-terminus \
     font-inconsolata \
