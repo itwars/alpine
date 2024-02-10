@@ -6,6 +6,7 @@ apk upgrade
 
 setup-xorg-base
 setup-desktop plasma
+apk add plasma openrc-settingsd
 
 rc-update add dbus
 rc-update add sddm
