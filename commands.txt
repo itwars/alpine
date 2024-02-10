@@ -1,0 +1,271 @@
+doas apk update
+setup-xorg-base 
+doas setup-xorg-base 
+doas apk add pciutils
+lspci
+apk search xf86-video
+doas apk add xf86-video-amdgpu
+ldmod
+doas lsmod
+doas lsmod|less
+apk search xf86-input
+doas apk add xf86-input-libinput
+doas apk add dbus
+doas apk add dbus-x11
+doas rc-update add dbus
+doas rc-service dbus start
+doas apk add elogind
+doas rc-update add elogind
+doas rc-service elogind start
+doas rc-update add polkit-elogind
+doas rc-update add elogind
+doas rc-update add polkit
+doas apk add polkit-elogind
+doas rc-update add polkit
+doas rc-service polkit start
+doas apk add plasma 
+doas apk add networkmanager-dnsmasq
+doas apk add plasma 
+doas setup-devd udev
+doas apk add kde-application-admin 
+doas apk add kde-applications-admin 
+doas apk add kde-applications-base
+doas apk add kde-applications-network
+doas rc-update add sddm
+doas rc-service sddm start
+ll
+ls -al
+nvim .xinitrc
+:x
+xinit 
+reboot
+doas reboot
+doas apk search kde language
+doas apk add plasma-desktop-lang
+doas apk add kdeplasma-desktop-lang
+history 
+doas apk add kde-application-graphics
+doas apk add kde-applications-graphics
+doas apk add kde-applications-multimedia
+doas apk add kde-applications-utils
+doas apk add firefox
+git clone https://github.com/itwars/dotfiles
+mc
+precmd() { if [ ! "${PWD##$HOME}" ]; then MC_PWD="~"; else [ "${PWD##$HOME/}" = "$PWD" ] && MC_PWD="$PWD" || MC_PWD="~/${PWD##$HOME/}"; fi; echo "$USER@$(hostname -s):$MC_PWD"; pwd>&9; kill -STOP $$; }; PRECMD=precmd; PS1='$($PRECMD)$ '
+ cd "`printf '%b' '\0057home\0057vrabah\0057dotfiles'`"
+tmux
+vi
+nvim
+apk search stdlib.h
+apk search stdlib
+nvim
+doas apk add musl-dev
+nvim
+mkdir .fonts
+cd Downloads/
+ll
+ls -al
+unzip *.zip
+unzip AnonymousPro.zip 
+unzip OpenDyslexic.zip 
+ll
+ls -al
+mc
+precmd() { if [ ! "${PWD##$HOME}" ]; then MC_PWD="~"; else [ "${PWD##$HOME/}" = "$PWD" ] && MC_PWD="$PWD" || MC_PWD="~/${PWD##$HOME/}"; fi; echo "$USER@$(hostname -s):$MC_PWD"; pwd>&9; kill -STOP $$; }; PRECMD=precmd; PS1='$($PRECMD)$ '
+ cd "`printf '%b' '\0057home\0057vrabah\0057Downloads'`"
+ cd "`printf '%b' '\0057home\0057vrabah'`"
+ cd "`printf '%b' '\0057home\0057vrabah\0057\0056fonts'`"
+ cd "`printf '%b' '\0057home\0057vrabah\0057Downloads'`"
+cd
+fc-cache -v
+doas fc-cache -v
+doas apk add alacritty
+ll
+ls -al
+tmux
+ll
+nvim
+doas apk add bash
+ chsh username
+ chsh vrabah
+whish bash
+which bash
+ chsh vrabah
+ll
+ls -al
+echo $SHELL
+history 
+history > ash-history.txt
+less ash-history.txt 
+doas apk add ncurses
+mc
+apk search freeoffice
+apk search microsoft
+apk search teams
+apk search office
+apk search office|less
+apk search kde language
+apk search kde | grep lang
+doas apk add sddm-kcm 
+apk search locales
+localectl
+doas apk add musl-locales
+localectl
+musl-locales
+locale
+doas apk add sddm-wayland-plasma
+doas apk add sddm-wayland
+apk search localectl
+doas apk add lang
+doas apk add systemd
+ls -al /usr/bin/locale 
+locale
+locale --help
+locale
+vi
+cd /etc/
+grep -R UTF-8
+grep -R UTF-8 *
+daos vi /etc/profile
+doas vi /etc/profile
+doas vi /etc/profile.d/00locale.sh 
+doas vi /etc/profile.d/20locale.sh 
+ls -al /usr/share/zoneinfo/
+ls /usr/share/zoneinfo/
+ls /usr/share/zoneinfo/*
+ll /usr/share/zoneinfo/
+ls -al /usr/share/zoneinfo/
+ls -a /usr/share/zoneinfo/
+ls -a /usr/share/zoneinfo/Europe/Paris 
+cat /usr/share/zoneinfo/Europe/Paris 
+doas apk add musl musl-utils musl-locales tzdata
+apk search docker
+apk search podman
+ll
+vi
+source .bashrc
+ll
+source .bashrc
+ll
+cd Downloads/
+ll
+sh setlocale1.sh 
+vi setlocale1.sh 
+history 
+history |less
+history 
+ash
+ll
+history > bash-history.txt
+ll
+vi setlocale1.sh 
+ll
+doas sh setlocale1.sh -h
+cd Downloads/
+doas sh setlocale1.sh -h
+less ../ash-history.txt 
+less ../bash-history.txt 
+cd ..
+doas sh setlocale1.sh -h
+cd Downloads/
+doas sh setlocale1.sh -h
+grep settingsd ../*.txt
+less ../ash-history.txt 
+doas sh setlocale1.sh -h
+doas apk add openrc-settinsd
+doas apk add openrc-settingsd
+rc-update add openrc-settingsd default && rc-service openrc-settingsd start
+doas rc-update add openrc-settingsd default && doas rc-service openrc-settingsd start
+doas sh setlocale1.sh -h
+doas sh setlocale1.sh -a
+doas sh setlocale1.sh -h
+doas sh setlocale1.sh -l fr_FR
+doas sh setlocale1.sh 
+ll
+doas apk search waylanf
+doas apk search wayland
+doas apk add vulkan-tools wayland-utils
+doas apk search vulkan
+doas apk search opencl
+doas apk add opencl
+doas apk search opengl
+doas apk search clinfo
+doas apk search cl
+doas apk search cl|less
+doas apk search mesa
+doas apk add mesa-vulkan-ati
+doas apk add clinfo
+doas apk add glxinfo
+doas apk search mesa
+doas apk add mesa-vulkan-intel
+vi .alacritty.toml 
+curl https://ollama.ai/install.sh | sh
+sudo apk add curl wget
+doas apk add curl wget
+curl https://ollama.ai/install.sh | sh
+ll
+curl https://ollama.ai/install.sh | sh
+ll
+cd Documents/
+ll
+pro
+mkdir projects
+cd projects/
+mkdir LLM
+cd LLM/
+mv ~/Downloads/ollama-linux-amd64 ollama
+ll
+chmod +x ollama 
+./ollama 
+ll
+./ollama 
+mc
+./ollama run
+./ollama serve
+ll
+doas apk add curl awk grep sed tee xargs
+./ollama serve
+curl https://ollama.ai/install.sh | sh
+doas curl https://ollama.ai/install.sh | sh
+doas curl https://ollama.ai/install.sh 
+curl https://ollama.ai/install.sh > install.sh
+ll
+rm *
+ll
+apk searc docker
+apk search docker
+doas apk add docker docker-cli-buildx docker-cli-compose
+doas apk add docker-openrc
+less ../ash-history.txt 
+less ~/ash-history.txt 
+doas rc-service elogind start
+doas rc-service openrc-docker start
+doas rc-service docker start
+doas rc-update add docker
+docker
+docker ps
+doas groupadd docker
+doas  usermod -aG docker $USER
+cd
+ll
+docker ps
+apk search kvantum
+doas apk add kvantum
+doas apk add kvantum-themes
+ll
+vi
+docker ps
+docker run -d --gpus=all -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+apk search docker
+doas apk add docker-bash-completion
+docker ps
+docker ps -a
+docker stop ollama
+docker rm ollama
+docker run -d -v ollama:/root/.ollama -p 11434:11434 --name ollama ollama/ollama
+docker exec -it ollama ollama run llama2
+doas apk add btop
+btop
+ajouter au fichier /Users/vrabah/.xinitrc
+XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland
