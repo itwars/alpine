@@ -64,6 +64,7 @@ function install_kde()
     kde-applications-admin \
     kde-applications-base \
     kde-applications-network \
+    kdeconnect \
     iwd \
     font-terminus \
     font-inconsolata \
