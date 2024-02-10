@@ -19,6 +19,20 @@ EOF
    apk upgrade
 }
 
+function setup_french()
+{
+cat << EOF > /etc/profile.d/99-fr.sh
+LANG=fr_FR.UTF-8
+LC_CTYPE=fr_FR.UTF-8
+LC_NUMERIC=fr_FR.UTF-8
+LC_TIME=fr_FR.UTF-8
+LC_COLLATE=fr_FR.UTF-8
+LC_MONETARY=fr_FR.UTF-8
+LC_MESSAGES=fr_FR.UTF-8
+LC_ALL=
+EOF
+}
+
 function install_xwindow ()
 {
   box "install xwindow stuffs"
@@ -48,10 +62,13 @@ function install_kde ()
     networkmanager-dnsmasq \
     kde-applications-admin \
     kde-applications-base \
-    kde-applications-network
+    kde-applications-network \
+    iwd
   setup-devd udev
   rc-update add sddm
   rc-service sddm start
+  rc-update add iwd
+  rc-service add iwd
 }
 
 function start_with_plasma()
@@ -71,6 +88,7 @@ function install_misc() {
 }
 
 update_repositories
+setup_french
 install_xwindow
 install_kde
 start_with_plasma
