@@ -11,11 +11,18 @@ function box() {
   echo $edgeBot | sed s/─/└/1 | sed s/─$/┘/
 }
 
+function update_repositories() {
+  box "Add community repo + update"
+  version=$(cat /etc/alpine-release | cut -d'.' -f1,2)
+cat << EOF > /etc/apk/repositories
+https://dl-cdn.alpinelinux.org/alpine/v$version/main
+https://dl-cdn.alpinelinux.org/alpine/v$version/community
+EOF
+   apk upgrade
+}
+
 function setup() 
 {
-apk update
-apk upgrade
-
 box "Install plasma + kde"
 
 setup-xorg-base
@@ -55,3 +62,6 @@ ipv6.ip6-privacy=2" > /etc/NetworkManager/NetworkManager.conf
 
 EOF
 }
+
+update_repositories
+setup
