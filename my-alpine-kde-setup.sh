@@ -36,7 +36,7 @@ EOF
 function install_xwindow ()
 {
   box "install xwindow stuffs"
-  apk add \
+  apk -q add \
    xf86-video-amdgpu \
    xf86-input-libinput \
    dbus \
@@ -57,7 +57,7 @@ function install_xwindow ()
 function install_kde ()
 {
   box "install kde"
-  apk add \
+  apk -q add \
     plasma \
     networkmanager-dnsmasq \
     kde-applications-admin \
@@ -65,6 +65,8 @@ function install_kde ()
     kde-applications-network \
     iwd
   setup-devd udev
+  rc-update networkmanager start
+  rc-service add networkmanager
   rc-update add sddm
   rc-service sddm start
   rc-update add iwd
@@ -79,7 +81,7 @@ EOF
 }
 
 function install_misc() {
-   apk add \
+   apk -q add \
     mc \
     neovim \
     gcc \
