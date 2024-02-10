@@ -33,7 +33,7 @@ LC_ALL=
 EOF
 }
 
-function install_xwindow ()
+function install_xwindow()
 {
   box "install xwindow stuffs"
   apk -q add \
@@ -54,33 +54,43 @@ function install_xwindow ()
 }
 
 
-function install_kde ()
+function install_kde()
 {
   box "install kde"
   apk -q add \
     plasma \
     networkmanager-dnsmasq \
+    networkmanager-wifi \
     kde-applications-admin \
     kde-applications-base \
     kde-applications-network \
-    iwd
+    iwd \
+    font-terminus \
+    font-inconsolata \
+    font-dejavu \
+    font-noto \
+    font-noto-cjk \
+    font-awesome \
+    font-noto-extra \
+    font-liberation
   setup-devd udev
-  rc-update networkmanager start
-  rc-service add networkmanager
+  rc-update add networkmanager
+  rc-service networkmanager start
+  rc-update add iwd
+  rc-service iwd start
   rc-update add sddm
   rc-service sddm start
-  rc-update add iwd
-  rc-service add iwd
 }
 
 function start_with_plasma()
 {
-cat << EOF> /home/vrabah/.xinitrc 
+cat << EOF > /home/vrabah/.xinitrc 
 XDG_SESSION_TYPE=wayland dbus-run-session startplasma-wayland
 EOF
 }
 
-function install_misc() {
+function install_misc() 
+{
    apk -q add \
     mc \
     neovim \
@@ -93,5 +103,5 @@ update_repositories
 setup_french
 install_xwindow
 install_kde
-start_with_plasma
+#start_with_plasma
 install_misc
