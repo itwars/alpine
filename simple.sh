@@ -26,8 +26,14 @@ box "Install plasma + kde"
 setup-xorg-base
 setup-desktop plasma
 apk add plasma openrc-settingsd
+
+box "setup locales"
+./setlocale-alpinelinux.sh -l fr_FR
+
+box "setup wayland"
 apk add xf86-video-amdgpu
-apk add frameworkintegration5 # allowed you to install new themes !!!
+# allowed you to install new themes !!!
+apk add frameworkintegration5 
 
 rc-update add dbus
 rc-update add sddm
@@ -63,22 +69,24 @@ ipv6.ip6-privacy=2" > /etc/NetworkManager/NetworkManager.conf
 EOF
 }
 
-function install_misc_kde(){
-  apk add \
+function install_misc_kde() {
+  box "install misc KDE"
+  apk add 
     vulkan-tools \
     opencl \
     wayland \
-    wayland-utils \
     mesa-vulkan-ati \
     mesa \
     mesa-egl \
     mesa-utils
 }
 
-function install_misc () {
+function install_misc ()
+{
+  box "install misc"
+# Neovim need ripgrep build-base imagemagick fd unzip wget curl gcc musl-dev 
   apk add \
-    mc \
-    neovim \ # Neovim need ripgrep build-base imagemagick fd unzip wget curl gcc musl-dev 
+    neovim \ 
     ripgrep \
     build-base \
     imagemagick \
@@ -87,14 +95,18 @@ function install_misc () {
     wget \
     curl \
     gcc \
-    musl-dev \
+    musl-dev 
+
+  apk add \
+    mc \
     ncurses \
     tmux \
     alacritty \
     go \
     btop \
     git-credential-oauth
-  git-credential-oauth configure # oauth for GITHUB
+  # oauth for GITHUB
+  # git-credential-oauth configure 
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
   unzip AnonymousPro.zip -d /usr/local/share/fonts/
   fc-cache -fv
@@ -102,16 +114,19 @@ function install_misc () {
 }
 
 function install_docker() {
+  box "install docker"
   apk add docker \
     docker-cli-compose \
     docker-cli-buildx
-  # No sudo for docker
+  # no sudo for docker
   usermod -aG docker vrabah 
 }
 
 function install_flatpak() {
+  box "install flatpak"
   apk add flatpak
-  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo # For Obsidian.md
+  # For Obsidian.md
+  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 
 }
 
 update_repositories
