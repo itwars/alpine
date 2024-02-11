@@ -89,6 +89,13 @@ function install_misc ()
   chsh /bin/bash
 }
 
+function install_docker {
+  apk add docker \
+    docker-cli-compose \
+    docker-cli-buildx
+}
+
 update_repositories
 setup
 install_misc 
+install_docker
