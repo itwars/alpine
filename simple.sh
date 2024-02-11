@@ -73,6 +73,7 @@ function install_misc ()
     tmux \
     alacritty \
     go \
+    btop \
     git-credential-oauth
   git-credential-oauth configure # oauth for GITHUB
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
