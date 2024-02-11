@@ -119,3 +119,9 @@ install_misc_kde
 install_misc 
 install_docker
 install flatpak
+
+##################################################################
+# Check GIT config : git config --global credential.helper store #
+##################################################################
+
+
