@@ -1,7 +1,5 @@
 #!/bin/bash
 
-
-
 function box() {
   title="│ $* │"
   edgeTop=$(echo "$title" | sed 's/./─/g')
@@ -71,8 +69,10 @@ function install_misc ()
     neovim \
     gcc \
     musl-dev \
+    ncurses \
     tmux \
-    alacritty
+    alacritty \
+    go 
 }
 
 update_repositories
