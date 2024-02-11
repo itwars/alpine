@@ -108,8 +108,14 @@ function install_docker {
   usermod -aG docker vrabah # no sudo for docker
 }
 
+function install_flatpak(){
+  apk add flatpak
+  flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo # For Obsidian.md
+}
+
 update_repositories
 setup
 install_misc_kde
 install_misc 
 install_docker
+install flatpak
