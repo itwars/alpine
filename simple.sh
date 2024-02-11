@@ -122,6 +122,12 @@ install flatpak
 
 ##################################################################
 # Check GIT config : git config --global credential.helper store #
+# Or you can add an alias in your ~/.gitconfig:                  #
+#                                                                #
+# [url "https://github.com/"]
+#   insteadOf = gh://
+# and execute:
+# git clone gh://knoopx/repo
 ##################################################################
 
 
