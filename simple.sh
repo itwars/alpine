@@ -93,6 +93,7 @@ function install_docker {
   apk add docker \
     docker-cli-compose \
     docker-cli-buildx
+  usermod -aG docker vrabah # no sudo for docker
 }
 
 update_repositories
