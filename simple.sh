@@ -28,6 +28,7 @@ box "Install plasma + kde"
 setup-xorg-base
 setup-desktop plasma
 apk add plasma openrc-settingsd
+apk add frameworkintegration5 # allowed you to install new themes !!!
 
 rc-update add dbus
 rc-update add sddm
@@ -63,5 +64,17 @@ ipv6.ip6-privacy=2" > /etc/NetworkManager/NetworkManager.conf
 EOF
 }
 
+function install_misc ()
+{
+  apk add \
+    mc \
+    neovim \
+    gcc \
+    musl-dev \
+    tmux \
+    alacritty
+}
+
 update_repositories
 setup
+install_misc 
