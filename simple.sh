@@ -98,14 +98,15 @@ function install_misc () {
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
   unzip AnonymousPro.zip -d ~/.fonts/
   fc-cache -fv
-  chsh /bin/bash
+  chsh --shell /bin/bash vrabah
 }
 
 function install_docker() {
   apk add docker \
     docker-cli-compose \
     docker-cli-buildx
-  usermod -aG docker vrabah # no sudo for docker
+  # No sudo for docker
+  usermod -aG docker vrabah 
 }
 
 function install_flatpak() {
