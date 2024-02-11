@@ -96,7 +96,7 @@ function install_misc () {
     git-credential-oauth
   git-credential-oauth configure # oauth for GITHUB
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
-  unzip AnonymousPro.zip -d ~/.fonts/
+  unzip AnonymousPro.zip -d /usr/local/share/fonts/
   fc-cache -fv
   chsh --shell /bin/bash vrabah
 }
