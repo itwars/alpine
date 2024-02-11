@@ -66,7 +66,14 @@ function install_misc ()
 {
   apk add \
     mc \
-    neovim \
+    neovim \ # Neovim need ripgrep build-base imagemagick fd unzip wget curl gcc musl-dev 
+    ripgrep \
+    build-base \
+    imagemagick \
+    fd \
+    unzip \
+    wget \
+    curl \
     gcc \
     musl-dev \
     ncurses \
@@ -79,6 +86,7 @@ function install_misc ()
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
   unzip AnonymousPro.zip -d ~/.fonts/
   fc-cache -fv
+  chsh /bin/bash
 }
 
 update_repositories
