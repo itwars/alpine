@@ -64,18 +64,18 @@ EOF
 }
 
 function install_misc_kde(){
-  apk add 
+  apk add \
     vulkan-tools \
     opencl \
     wayland \
+    wayland-utils \
     mesa-vulkan-ati \
     mesa \
     mesa-egl \
     mesa-utils
 }
 
-function install_misc ()
-{
+function install_misc () {
   apk add \
     mc \
     neovim \ # Neovim need ripgrep build-base imagemagick fd unzip wget curl gcc musl-dev 
@@ -101,14 +101,14 @@ function install_misc ()
   chsh /bin/bash
 }
 
-function install_docker {
+function install_docker() {
   apk add docker \
     docker-cli-compose \
     docker-cli-buildx
   usermod -aG docker vrabah # no sudo for docker
 }
 
-function install_flatpak(){
+function install_flatpak() {
   apk add flatpak
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo # For Obsidian.md
 }
@@ -118,7 +118,7 @@ setup
 install_misc_kde
 install_misc 
 install_docker
-install flatpak
+install_flatpak
 
 ##################################################################
 # Check GIT config : git config --global credential.helper store #
