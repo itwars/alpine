@@ -26,6 +26,7 @@ box "Install plasma + kde"
 setup-xorg-base
 setup-desktop plasma
 apk add plasma openrc-settingsd
+apk add xf86-video-amdgpu
 apk add frameworkintegration5 # allowed you to install new themes !!!
 
 rc-update add dbus
@@ -60,6 +61,17 @@ wifi.backend=iwd
 ipv6.ip6-privacy=2" > /etc/NetworkManager/NetworkManager.conf
 
 EOF
+}
+
+function install_misc_kde(){
+  apk add 
+    vulkan-tools \
+    opencl \
+    wayland \
+    mesa-vulkan-ati \
+    mesa \
+    mesa-egl \
+    mesa-utils
 }
 
 function install_misc ()
@@ -98,5 +110,6 @@ function install_docker {
 
 update_repositories
 setup
+install_misc_kde
 install_misc 
 install_docker
