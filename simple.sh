@@ -72,7 +72,9 @@ function install_misc ()
     ncurses \
     tmux \
     alacritty \
-    go 
+    go \
+    git-credential-oauth
+  git-credential-oauth configure # oauth for GITHUB
 }
 
 update_repositories
