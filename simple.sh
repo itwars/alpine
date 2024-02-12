@@ -27,8 +27,10 @@ setup-xorg-base
 
 
 box "setup locales"
-apk add openrc-settingsd musl-locales dbus
+apk add openrc-settingsd musl-locales dbus polkit
 rc-update add dbus
+rc-update add settingsd
+rc-update add polkit
 ./setlocale-alpinelinux.sh -l fr_FR.utf8
 
 box "setup plasma"
