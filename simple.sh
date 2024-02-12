@@ -12,18 +12,18 @@ function box() {
 function update_repositories() {
   box "Add community repo + update"
   version=$(cat /etc/alpine-release | cut -d'.' -f1,2)
-cat << EOF > /etc/apk/repositories
+cat << EOF > /etc/apk -q/repositories
 https://dl-cdn.alpinelinux.org/alpine/v$version/main
 https://dl-cdn.alpinelinux.org/alpine/v$version/community
 EOF
-   apk upgrade
+   apk -q upgrade
 }
 
 function setup() 
 {
 
 box "setup locales"
-apk add openrc-settingsd musl-locales dbus polkit
+apk -q add openrc-settingsd musl-locales dbus polkit
 rc-update add dbus
 rc-update add openrc-settingsd
 rc-update add polkit
@@ -46,13 +46,13 @@ setup-xorg-base
 
 box "setup plasma"
 setup-desktop plasma
-apk add plasma
+apk -q add plasma
 
 
 box "setup wayland"
-apk add xf86-video-amdgpu
+apk -q add xf86-video-amdgpu
 # allowed you to install new themes !!!
-apk add frameworkintegration5 
+apk -q add frameworkintegration5 
 
 rc-update add sddm
 rc-update add fuse
@@ -60,7 +60,7 @@ rc-update add elogind
 
 box "Install networkmanager"
 
-apk add networkmanager networkmanager-wifi iwd
+apk -q add networkmanager networkmanager-wifi iwd
 
 addgroup vrabah plugdev                                  
 rc-update add networkmanager boot                  
@@ -89,7 +89,7 @@ EOF
 
 function install_misc_kde() {
   box "install misc KDE"
-  apk add \
+  apk -q add \
     vulkan-tools \
     opencl \
     wayland \
@@ -103,8 +103,8 @@ function install_misc ()
 {
   box "install misc"
 # Neovim need ripgrep build-base imagemagick fd unzip wget curl gcc musl-dev 
-  apk add \
-    neovim \ 
+  apk -q add \
+    neovim \
     ripgrep \
     build-base \
     imagemagick \
@@ -115,7 +115,7 @@ function install_misc ()
     gcc \
     musl-dev 
 
-  apk add \
+  apk -q add \
     mc \
     ncurses \
     tmux \
@@ -133,7 +133,7 @@ function install_misc ()
 
 function install_docker() {
   box "install docker"
-  apk add docker \
+  apk -q add docker \
     docker-cli-compose \
     docker-cli-buildx
   # no sudo for docker
@@ -142,7 +142,7 @@ function install_docker() {
 
 function install_flatpak() {
   box "install flatpak"
-  apk add flatpak
+  apk -q add flatpak
   # For Obsidian.md
   flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo 
 }
