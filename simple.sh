@@ -39,6 +39,7 @@ then
   ./setlocale-alpinelinux.sh -v fr
   ./setlocale-alpinelinux.sh -x fr
   reboot
+  sleep 30
 fi
 
 box "Install plasma + kde"
