@@ -36,7 +36,7 @@ rc-service dbus start
 rc-service polkit start
 rc-service openrc-settingsd start
 
-alreadyset =`./setlocale-alpinelinux.sh -a | grep FR | wc -l`
+alreadyset=`./setlocale-alpinelinux.sh -a | grep FR | wc -l`
 if [ $alreadyset -eq 0 ] 
 then
   ./setlocale-alpinelinux.sh -l fr_FR.utf8
