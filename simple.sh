@@ -31,8 +31,15 @@ apk add openrc-settingsd musl-locales dbus polkit
 rc-update add dbus
 rc-update add settingsd
 rc-update add polkit
-./setlocale-alpinelinux.sh -l fr_FR.utf8
 
+alreadyset =`./setlocale-alpinelinux.sh -a | grep FR | wc -l`
+if [ $alreadyset -eq 0 ] 
+then
+  ./setlocale-alpinelinux.sh -l fr_FR.utf8
+  ./setlocale-alpinelinux.sh -v fr
+  ./setlocale-alpinelinux.sh -x fr
+  reboot
+fi
 box "setup plasma"
 setup-desktop plasma
 apk add plasma
