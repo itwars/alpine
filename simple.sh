@@ -27,7 +27,8 @@ setup-xorg-base
 
 
 box "setup locales"
-apk add openrc-settingsd musl-locales
+apk add openrc-settingsd musl-locales dbus
+rc-update add dbus
 ./setlocale-alpinelinux.sh -l fr_FR.utf8
 
 box "setup plasma"
@@ -40,7 +41,6 @@ apk add xf86-video-amdgpu
 # allowed you to install new themes !!!
 apk add frameworkintegration5 
 
-rc-update add dbus
 rc-update add sddm
 rc-update add fuse
 rc-update add elogind
