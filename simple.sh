@@ -32,6 +32,10 @@ rc-update add dbus
 rc-update add settingsd
 rc-update add polkit
 
+rc-service dbus start
+rc-service polkit start
+rc-service openrc-settingsd start
+
 alreadyset =`./setlocale-alpinelinux.sh -a | grep FR | wc -l`
 if [ $alreadyset -eq 0 ] 
 then
