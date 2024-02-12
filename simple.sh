@@ -21,10 +21,6 @@ EOF
 
 function setup() 
 {
-box "Install plasma + kde"
-
-setup-xorg-base
-
 
 box "setup locales"
 apk add openrc-settingsd musl-locales dbus polkit
@@ -44,6 +40,10 @@ then
   ./setlocale-alpinelinux.sh -x fr
   reboot
 fi
+
+box "Install plasma + kde"
+setup-xorg-base
+
 box "setup plasma"
 setup-desktop plasma
 apk add plasma
