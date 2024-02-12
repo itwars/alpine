@@ -25,7 +25,7 @@ function setup()
 box "setup locales"
 apk add openrc-settingsd musl-locales dbus polkit
 rc-update add dbus
-rc-update add settingsd
+rc-update add openrc-settingsd
 rc-update add polkit
 
 rc-service dbus start
