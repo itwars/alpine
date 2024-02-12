@@ -24,11 +24,16 @@ function setup()
 box "Install plasma + kde"
 
 setup-xorg-base
-setup-desktop plasma
-apk add plasma openrc-settingsd
+
 
 box "setup locales"
-./setlocale-alpinelinux.sh -l fr_FR
+apk add openrc-settingsd musl-locales
+./setlocale-alpinelinux.sh -l fr_FR.utf8
+
+box "setup plasma"
+setup-desktop plasma
+apk add plasma
+
 
 box "setup wayland"
 apk add xf86-video-amdgpu
@@ -71,7 +76,7 @@ EOF
 
 function install_misc_kde() {
   box "install misc KDE"
-  apk add 
+  apk add \
     vulkan-tools \
     opencl \
     wayland \
