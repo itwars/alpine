@@ -49,6 +49,8 @@ box "setup plasma"
 setup-desktop plasma
 apk add --quiet plasma
 
+box "install kde base app"
+apk add --quiet kde-applications-base
 
 box "setup wayland"
 apk add --quiet xf86-video-amdgpu
