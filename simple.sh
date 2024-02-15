@@ -141,6 +141,8 @@ function install_docker() {
     docker-cli-buildx
   # no sudo for docker
   usermod -aG docker vrabah 
+  rc-update add docker
+  rc-service docker start
 }
 
 function install_flatpak() {
