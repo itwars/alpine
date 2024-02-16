@@ -65,7 +65,7 @@ box "Install networkmanager"
 
 apk add --quiet networkmanager networkmanager-wifi iwd
 
-addgroup vrabah plugdev                                  
+addgroup vrabah plugdev                                 
 rc-update add networkmanager boot                  
 rc-update add iwd boot
 rc-update del networking boot                        
@@ -88,6 +88,14 @@ wifi.backend=iwd
 ipv6.ip6-privacy=2" > /etc/NetworkManager/NetworkManager.conf
 
 EOF
+
+box "Install bluetooth"
+setup-devd udev
+apk add --quiet bluez pipewire-spa-blue pipewire-spa-tools pipewire-spa-vulkan qt5-qtconnectivity
+modprobe btusb 
+adduser vrabah lp
+rc-service bluetooth start 
+rc-update add bluetooth
 }
 
 function install_misc_kde() {
