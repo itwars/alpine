@@ -1,0 +1,3 @@
+loginctl terminate-user john → qdbus org.kde.ksmserver /KSMServer logout 0 0 1
+systemctl reboot             → qdbus org.kde.ksmserver /KSMServer logout 0 1 1
+systemctl poweroff           → qdbus org.kde.ksmserver /KSMServer logout 0 2 1
