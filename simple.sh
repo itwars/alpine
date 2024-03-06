@@ -126,6 +126,8 @@ function install_misc ()
     gcc \
     musl-dev 
 
+box "install user specific tools"
+
   apk add --quiet \
     mc \
     ncurses \
@@ -140,6 +142,9 @@ function install_misc ()
   unzip AnonymousPro.zip -d /usr/local/share/fonts/
   fc-cache -fv
   chsh --shell /bin/bash vrabah
+cat << EOF > /home/vrabah/.profile
+source .bashrc
+EOF
 }
 
 function install_docker() {
