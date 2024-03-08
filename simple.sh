@@ -53,7 +53,7 @@ box "install kde base app"
 apk add --quiet kde-applications-base
 
 box "setup wayland"
-apk add --quiet xf86-video-amdgpu
+apk add --quiet xf86-video-amdgpu wayland-utils
 # allowed you to install new themes !!!
 apk add --quiet frameworkintegration5 
 
