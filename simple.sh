@@ -151,11 +151,29 @@ function install_docker() {
   box "install docker"
   apk add --quiet docker \
     docker-cli-compose \
-    docker-cli-buildx
+    docker-cli-buildx \
+    bridge-utils \
+    bridge
   # no sudo for docker
   usermod -aG docker vrabah 
   rc-update add docker
   rc-service docker start
+}
+
+function install_libvirt_qemu() {
+  box "install kvm qemu libvirt"
+  apk add --quiet libvirt-client \
+    libvirt-daemon \
+    qemu \
+    qemu-system-x86_64 \
+    qemu-img \
+    qemu-modules \
+    xorriso
+  rc-update add libvirt 
+  rc-update add libvirt-guest
+}
+{
+  
 }
 
 function install_flatpak() {
@@ -170,6 +188,7 @@ setup
 install_misc_kde
 install_misc 
 install_docker
+install_libvirt_qemu
 install_flatpak
 
 ##################################################################
