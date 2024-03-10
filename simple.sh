@@ -2,11 +2,11 @@
 
 function box() {
   title="│ $* │"
-  edgeTop=$(echo "$title" | sed 's/./─/g')
-  edgeBot=$(echo "$title" | sed 's/./─/g')
-  echo $edgeTop | sed s/─/┌/1 | sed s/─$/┐/
-  echo $title
-  echo $edgeBot | sed s/─/└/1 | sed s/─$/┘/
+  edgeTop=$(box "$title" | sed 's/./─/g')
+  edgeBot=$(box "$title" | sed 's/./─/g')
+  box $edgeTop | sed s/─/┌/1 | sed s/─$/┐/
+  box $title
+  box $edgeBot | sed s/─/└/1 | sed s/─$/┘/
 }
 
 function update_repositories() {
@@ -98,6 +98,44 @@ rc-service bluetooth start
 rc-update add bluetooth
 }
 
+setup_kernel_silent() {
+  apk add linux-edge
+  apk del linux-lts
+  if grep -q \#rc_parallel=\"NO\" /etc/rc.conf; then
+    # uses "@" as a delimiter; the '-i' flag edits the file in-place
+    doas sed -i 's@#rc_parallel="NO"@rc_parallel="YES"@g' /etc/rc.conf
+  else
+    box "WARNING: unable to find the string '#rc_parallel=\"NO\"' in /etc/rc.conf"
+  fi
+  # openrc sysinit
+  if grep -q "openrc sysinit --quiet" /etc/inittab; then
+      box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc sysinit --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
+  else
+      doas sed -i 's@openrc sysinit@openrc sysinit --quiet@g' /etc/inittab
+  fi
+  
+  # openrc boot
+  if grep -q "openrc boot --quiet" /etc/inittab; then
+      box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc boot --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
+  else
+      doas sed -i 's@openrc boot@openrc boot --quiet @g' /etc/inittab
+  fi
+  
+  # openrc default
+  if grep -q "openrc default --quiet" /etc/inittab; then
+      box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc default --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
+  else
+      doas sed -i 's@openrc default@openrc default --quiet@g' /etc/inittab
+  fi
+  
+  # openrc shutdown
+  if grep -q "openrc shutdown --quiet" /etc/inittab; then
+      box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc shutdown --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
+  else
+      doas sed -i 's@openrc shutdown@openrc shutdown --quiet@g' /etc/inittab
+  fi
+}
+
 function install_misc_kde() {
   box "install misc KDE"
   apk add --quiet \
@@ -185,6 +223,7 @@ function install_flatpak() {
 
 update_repositories
 setup
+setup_kernel_silent
 install_misc_kde
 install_misc 
 install_docker
