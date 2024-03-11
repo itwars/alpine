@@ -2,11 +2,11 @@
 
 function box() {
   title="│ $* │"
-  edgeTop=$(box "$title" | sed 's/./─/g')
-  edgeBot=$(box "$title" | sed 's/./─/g')
-  box $edgeTop | sed s/─/┌/1 | sed s/─$/┐/
-  box $title
-  box $edgeBot | sed s/─/└/1 | sed s/─$/┘/
+  edgeTop=$(echo "$title" | sed 's/./─/g')
+  edgeBot=$(echo "$title" | sed 's/./─/g')
+  echo $edgeTop | sed s/─/┌/1 | sed s/─$/┐/
+  echo $title
+  echo $edgeBot | sed s/─/└/1 | sed s/─$/┘/
 }
 
 function update_repositories() {
@@ -209,9 +209,6 @@ function install_libvirt_qemu() {
     xorriso
   rc-update add libvirt 
   rc-update add libvirt-guest
-}
-{
-  
 }
 
 function install_flatpak() {
