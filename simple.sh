@@ -103,7 +103,7 @@ setup_kernel_silent() {
   apk del linux-lts
   if grep -q \#rc_parallel=\"NO\" /etc/rc.conf; then
     # uses "@" as a delimiter; the '-i' flag edits the file in-place
-    doas sed -i 's@#rc_parallel="NO"@rc_parallel="YES"@g' /etc/rc.conf
+    sed -i 's@#rc_parallel="NO"@rc_parallel="YES"@g' /etc/rc.conf
   else
     box "WARNING: unable to find the string '#rc_parallel=\"NO\"' in /etc/rc.conf"
   fi
@@ -111,28 +111,28 @@ setup_kernel_silent() {
   if grep -q "openrc sysinit --quiet" /etc/inittab; then
       box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc sysinit --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
   else
-      doas sed -i 's@openrc sysinit@openrc sysinit --quiet@g' /etc/inittab
+      sed -i 's@openrc sysinit@openrc sysinit --quiet@g' /etc/inittab
   fi
   
   # openrc boot
   if grep -q "openrc boot --quiet" /etc/inittab; then
       box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc boot --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
   else
-      doas sed -i 's@openrc boot@openrc boot --quiet @g' /etc/inittab
+      sed -i 's@openrc boot@openrc boot --quiet @g' /etc/inittab
   fi
   
   # openrc default
   if grep -q "openrc default --quiet" /etc/inittab; then
       box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc default --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
   else
-      doas sed -i 's@openrc default@openrc default --quiet@g' /etc/inittab
+      sed -i 's@openrc default@openrc default --quiet@g' /etc/inittab
   fi
   
   # openrc shutdown
   if grep -q "openrc shutdown --quiet" /etc/inittab; then
       box "WARNING: the file '/etc/inittab' alredy contains the string 'openrc shutdown --quiet', as such the script will not commit any changes and it adivised to check the '/etc/inittab' integrity manually."
   else
-      doas sed -i 's@openrc shutdown@openrc shutdown --quiet@g' /etc/inittab
+      sed -i 's@openrc shutdown@openrc shutdown --quiet@g' /etc/inittab
   fi
 }
 
@@ -214,6 +214,7 @@ function install_libvirt_qemu() {
 }
 
 function install_flatpak() {
+  apk add fuse
   box "install flatpak"
   apk add --quiet flatpak
   # For Obsidian.md
