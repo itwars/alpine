@@ -207,8 +207,9 @@ function install_libvirt_qemu() {
     qemu-img \
     qemu-modules \
     xorriso
-  rc-update add libvirt 
-  rc-update add libvirt-guest
+  rc-update add libvirtd
+  rc-update add libvirt-guests
+  addgroup vrabah qemu
 }
 
 function install_flatpak() {
