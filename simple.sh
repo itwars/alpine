@@ -210,6 +210,7 @@ function install_libvirt_qemu() {
   rc-update add libvirtd
   rc-update add libvirt-guests
   addgroup vrabah qemu
+  addgroup vrabah kvm
 }
 
 function install_flatpak() {
