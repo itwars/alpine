@@ -91,7 +91,7 @@ EOF
 
 box "Install bluetooth"
 setup-devd udev
-apk add --quiet bluez pipewire-spa-blue pipewire-spa-tools pipewire-spa-vulkan qt5-qtconnectivity
+apk add --quiet bluez pipewire-spa-bluez pipewire-spa-tools pipewire-spa-vulkan qt5-qtconnectivity
 modprobe btusb 
 adduser vrabah lp
 rc-service bluetooth start 
@@ -99,8 +99,6 @@ rc-update add bluetooth
 }
 
 setup_kernel_silent() {
-  apk add linux-edge
-  apk del linux-lts
   if grep -q \#rc_parallel=\"NO\" /etc/rc.conf; then
     # uses "@" as a delimiter; the '-i' flag edits the file in-place
     sed -i 's@#rc_parallel="NO"@rc_parallel="YES"@g' /etc/rc.conf
