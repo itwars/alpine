@@ -171,7 +171,8 @@ box "install user specific tools"
     alacritty \
     go \
     btop \
-    git-credential-oauth
+    git-credential-oauth \
+    bash-completion
   # oauth for GITHUB
   # git-credential-oauth configure 
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
@@ -180,6 +181,7 @@ box "install user specific tools"
   chsh --shell /bin/bash vrabah
 cat << EOF > /home/vrabah/.profile
 source .bashrc
+source /etc/bash/bash_completion.sh
 EOF
 }
 
