@@ -173,11 +173,13 @@ box "install user specific tools"
     btop \
     git-credential-oauth \
     bash-completion
-  # oauth for GITHUB
-  # git-credential-oauth configure 
+  box "Install fonts"
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
   unzip AnonymousPro.zip -d /usr/local/share/fonts/
   fc-cache -fv
+  box "install z cd"
+  wget https://raw.githubusercontent.com/rupa/z/master/z.sh > ~/.bashrc.d/z.zh
+  box "change shell to bash"
   chsh --shell /bin/bash vrabah
 cat << EOF > /home/vrabah/.profile
 source .bashrc
