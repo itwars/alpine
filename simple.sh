@@ -53,7 +53,7 @@ box "install kde base app"
 apk add --quiet kde-applications-base
 
 box "setup wayland"
-apk add --quiet xf86-video-amdgpu wayland-utils
+apk add --quiet xf86-video-amdgpu wayland-utils wl-clipboard
 # allowed you to install new themes !!!
 apk add --quiet frameworkintegration5 
 
@@ -208,7 +208,8 @@ function install_libvirt_qemu() {
     qemu-system-x86_64 \
     qemu-img \
     qemu-modules \
-    xorriso
+    xorriso \
+    krdc
   rc-update add libvirtd
   rc-update add libvirt-guests
   addgroup vrabah qemu
