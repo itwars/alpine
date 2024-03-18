@@ -160,7 +160,9 @@ function install_misc ()
     wget \
     curl \
     gcc \
-    musl-dev 
+    musl-dev \
+    jq \
+    yq
 
 box "install user specific tools"
 
