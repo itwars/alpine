@@ -62,8 +62,9 @@ rc-update add fuse
 rc-update add elogind
 
 box "Install networkmanager"
-
 apk add --quiet networkmanager networkmanager-wifi iwd
+sed -i 's/^#EnableNetworkConfiguration=True/EnableNetworkConfiguration=True/' /etc/iwd/main.conf
+sed -i 's/^#NameResolvingService=resolvconf/NameResolvingService=resolvconf/' /etc/iwd/main.conf
 
 addgroup vrabah plugdev                                 
 rc-update add networkmanager boot                  
@@ -174,7 +175,8 @@ box "install user specific tools"
     go \
     btop \
     git-credential-oauth \
-    bash-completion
+    bash-completion \
+    isoimagewriter
   box "Install fonts"
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
   unzip AnonymousPro.zip -d /usr/local/share/fonts/
@@ -249,4 +251,26 @@ install_flatpak
 # git clone gh://knoopx/repo
 ##################################################################
 
-
+# Name                               Application ID                                 Version                Branch                Installation
+ #Jarosław Foksa                     com.boxy_svg.BoxySVG                           4.27.3                 stable                system
+ #Popsicle                           com.system76.Popsicle                          1.3.0                  stable                system
+ #Peter Squicciarini                 com.vscodium.codium                            1.87.2.24072           stable                system
+ #WPS Office                         com.wps.Office                                 11.1.0.11698           stable                system
+ #Obsidian                           md.obsidian.Obsidian                           1.5.11                 stable                system
+ #Freedesktop Platform               org.freedesktop.Platform                       21.08.22               21.08                 system
+ #Freedesktop Platform               org.freedesktop.Platform                       22.08.22               22.08                 system
+ #Freedesktop Platform               org.freedesktop.Platform                       23.08.14               23.08                 system
+ #Mesa                               org.freedesktop.Platform.GL.default            21.3.9                 21.08                 system
+ #Mesa                               org.freedesktop.Platform.GL.default            24.0.3                 22.08                 system
+ #Mesa (Extra)                       org.freedesktop.Platform.GL.default            24.0.3                 22.08-extra           system
+ #Mesa                               org.freedesktop.Platform.GL.default            24.0.3                 23.08                 system
+ #Mesa (Extra)                       org.freedesktop.Platform.GL.default            24.0.3                 23.08-extra           system
+ #Intel                              org.freedesktop.Platform.VAAPI.Intel                                  21.08                 system
+ #Intel                              org.freedesktop.Platform.VAAPI.Intel                                  22.08                 system
+ #Intel                              org.freedesktop.Platform.VAAPI.Intel                                  23.08                 system
+ #openh264                           org.freedesktop.Platform.openh264              2.1.0                  2.0                   system
+ #openh264                           org.freedesktop.Platform.openh264              2.1.0                  2.2.0                 system
+ #Freedesktop SDK                    org.freedesktop.Sdk                            23.08.14               23.08                 system
+ #Breeze GTK theme                   org.gtk.Gtk3theme.Breeze                       5.27.8                 3.22                  system
+ #KDE Application Platform           org.kde.Platform                                                      5.15-23.08            system
+ #DB Browser for SQLite              org.sqlitebrowser.sqlitebrowser                3.12.2                 stable                system
