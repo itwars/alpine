@@ -182,7 +182,7 @@ box "install user specific tools"
   unzip AnonymousPro.zip -d /usr/local/share/fonts/
   fc-cache -fv
   box "install z cd"
-  wget -O ~/.bashrc.d/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh
+  wget -O /home/vrabah/.bashrc.d/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh
   box "change shell to bash"
   chsh --shell /bin/bash vrabah
 cat << EOF > /home/vrabah/.profile
