@@ -61,6 +61,10 @@ rc-update add sddm
 rc-update add fuse
 rc-update add elogind
 
+box "Fix sddm enter key issue"
+echo "[General]" >> /etc/sddm.conf 
+echo "InputMethod=" >> /etc/sddm.conf 
+
 box "Install networkmanager"
 apk add --quiet networkmanager networkmanager-wifi iwd
 sed -i 's/^#EnableNetworkConfiguration=True/EnableNetworkConfiguration=True/' /etc/iwd/main.conf
@@ -182,6 +186,7 @@ box "install user specific tools"
   unzip AnonymousPro.zip -d /usr/local/share/fonts/
   fc-cache -fv
   box "install z cd"
+  mkdir -p /home/vrabah/.bashrc.d/
   wget -O /home/vrabah/.bashrc.d/z.sh https://raw.githubusercontent.com/rupa/z/master/z.sh
   box "change shell to bash"
   chsh --shell /bin/bash vrabah
