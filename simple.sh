@@ -98,7 +98,7 @@ box "Install bluetooth"
 setup-devd udev
 apk add --quiet bluez pipewire-spa-bluez pipewire-spa-tools pipewire-spa-vulkan qt5-qtconnectivity
 modprobe btusb 
-adduser vrabah lp
+addgroup vrabah lp
 rc-service bluetooth start 
 rc-update add bluetooth
 }
