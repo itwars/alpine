@@ -71,10 +71,10 @@ sed -i 's/^#EnableNetworkConfiguration=True/EnableNetworkConfiguration=True/' /e
 sed -i 's/^#NameResolvingService=resolvconf/NameResolvingService=resolvconf/' /etc/iwd/main.conf
 
 addgroup vrabah plugdev                                 
-rc-update add networkmanager boot                  
-rc-update add iwd boot
-rc-update del networking boot                        
-rc-update del wpa_supplicant boot
+rc-update add networkmanager
+rc-update add iwd 
+rc-update del networking
+rc-update del wpa_supplicant
 
 
 cat << EOF > /etc/NetworkManager/NetworkManager.conf
