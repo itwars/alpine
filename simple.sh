@@ -146,6 +146,8 @@ function install_misc_kde() {
     opencl \
     wayland \
     mesa-vulkan-ati \
+    mesa-vulkan-layers \
+    mesa-vulkan-swrast \
     mesa \
     mesa-egl \
     mesa-utils
