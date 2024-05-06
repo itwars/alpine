@@ -36,6 +36,7 @@ function install_misc ()
   box "Install fonts"
   wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/AnonymousPro.zip 
   unzip AnonymousPro.zip -d ~/.fonts
+  rm AnonymousPro.zip
   fc-cache -fv
   box "install z cd"
   mkdir -p /home/ivra0940/.bashrc.d/
@@ -50,7 +51,7 @@ function install_docker() {
     docker-buildx \
     bridge-utils 
   # no sudo for docker
-  #usermod -aG docker ivra0940 
+  usermod -aG docker ivra0940 
 }
 
 function install_libvirt_qemu() {
@@ -58,12 +59,13 @@ function install_libvirt_qemu() {
   sudo apt install \
     libvirt-clients \
     libvirt-daemon \
+    libvirt-daemon-system \
+    qemu-system-x86 \
     qemu-utils \
     xorriso \
-    krdc
-  #addgroup ivra0940 qemu
-  #addgroup ivra0940 kvm
-  #addgroup ivra0940 libvirt
+    mkisofs \
+    krdc \
+    spice-client-gtk 
 }
 
 install_misc 
