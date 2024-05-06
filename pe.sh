@@ -68,6 +68,12 @@ function install_libvirt_qemu() {
     spice-client-gtk 
 }
 
+function setup_app() {
+  box "setup Firefox"
+  echo "user_pref(\"browser.translations.automaticallyPopup\", false);" >> snap/firefox/common/.mozilla/firefox/default/user.js 
+}
+
 install_misc 
 install_docker
 install_libvirt_qemu
+setup_app
