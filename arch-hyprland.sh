@@ -8,7 +8,7 @@ sudo pacman -S hyprland \
                 mako \
                 pipewire \
                 wireplumber \
-                wofi \
+                rofi \
                 firefox \
                 ttf-noto-nerd \
                 fastfetch \
