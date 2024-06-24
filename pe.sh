@@ -1,5 +1,9 @@
 #!/bin/bash
 
+
+# Sway 
+# sudo apt install sway waybar wofi mako-notifier brightnessctl swaybg swayidle swaylock 
+
 function box() {
   title="│ $* │"
   edgeTop=$(echo "$title" | sed 's/./─/g')
