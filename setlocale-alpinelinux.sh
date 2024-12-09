@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PREFIX=
+PREFIX=/usr
 : ${LIBDIR=$PREFIX/lib}
 . "$LIBDIR/libalpine.sh"
 
